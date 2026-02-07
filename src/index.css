@@ -9,7 +9,12 @@
   }
 
   body {
-    @apply font-lexend antialiased min-h-screen;
+    @apply font-lexend antialiased min-h-screen relative overflow-x-hidden;
+    background: radial-gradient(circle at 50% 0%, #ffffff 0%, #fafafa 100%);
+  }
+
+  ::selection {
+    @apply bg-text-primary text-white;
   }
 
   h1,

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -7,7 +8,7 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -21,12 +22,9 @@ const Navbar = () => {
     };
 
     const handleNavClick = (e, item) => {
-        if (item === 'About') return; // Let Link handle it
+        if (item === 'About') return;
 
         if (location.pathname !== '/') {
-            // If not on home page, navigation will happen, then we need to scroll after navigation
-            // This is a simple implementation, for robust hash scrolling on route change additional logic is needed
-            // But for now, we can just let it navigate to '/'
             return;
         }
 
@@ -35,16 +33,21 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 bg-bg-surface/80 backdrop-blur-md border-b border-border-color' : 'py-8 bg-transparent'}`}>
+        <motion.nav
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 bg-white/50 backdrop-blur-md border-b border-white/20 shadow-sm' : 'py-6 bg-transparent'}`}
+        >
             <div className="container flex items-center justify-between">
-                <Link to="/" className="font-chillax text-2xl font-semibold text-text-primary no-underline">
+                <Link to="/" className="font-chillax text-2xl font-semibold text-text-primary no-underline tracking-tight">
                     Samuel.
                 </Link>
 
                 <div className="hidden md:flex gap-8">
                     <Link
                         to="/about"
-                        className={`text-base transition-colors duration-200 font-normal hover:text-text-primary no-underline ${location.pathname === '/about' ? 'text-text-primary font-medium' : 'text-text-secondary'}`}
+                        className={`text-sm font-medium transition-colors duration-200 no-underline ${location.pathname === '/about' ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'}`}
                     >
                         About
                     </Link>
@@ -55,7 +58,7 @@ const Navbar = () => {
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
                                 onClick={(e) => handleNavClick(e, item)}
-                                className="text-text-secondary no-underline text-base transition-colors duration-200 font-normal hover:text-text-primary"
+                                className="text-text-secondary no-underline text-sm font-medium transition-colors duration-200 hover:text-text-primary"
                             >
                                 {item}
                             </a>
@@ -63,7 +66,7 @@ const Navbar = () => {
                             <Link
                                 key={item}
                                 to={`/#${item.toLowerCase()}`}
-                                className="text-text-secondary no-underline text-base transition-colors duration-200 font-normal hover:text-text-primary"
+                                className="text-text-secondary no-underline text-sm font-medium transition-colors duration-200 hover:text-text-primary"
                             >
                                 {item}
                             </Link>
@@ -72,7 +75,7 @@ const Navbar = () => {
 
                     <Link
                         to="/contact"
-                        className={`text-base transition-colors duration-200 font-normal hover:text-text-primary no-underline ${location.pathname === '/contact' ? 'text-text-primary font-medium' : 'text-text-secondary'}`}
+                        className={`text-sm font-medium transition-colors duration-200 no-underline ${location.pathname === '/contact' ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'}`}
                     >
                         Contact
                     </Link>
@@ -81,7 +84,7 @@ const Navbar = () => {
                 {/* Mobile Menu Icon (Placeholder) */}
                 <button className="hidden bg-none border-none text-white">Menu</button>
             </div>
-        </nav>
+        </motion.nav>
     );
 };
 
