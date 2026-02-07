@@ -27,31 +27,31 @@ const Contact = () => {
         {
             name: 'Email',
             url: 'mailto:samuelidowu689@gmail.com',
-            icon: <Icon icon="lucide:mail" width="20" height="20" />
+            icon: <Icon icon="lucide:mail" width="18" height="18" />
         },
         {
             name: 'LinkedIn',
             url: 'https://www.linkedin.com/in/samueltemiloluwaidowu/',
-            icon: <Icon icon="lucide:linkedin" width="20" height="20" />
+            icon: <Icon icon="lucide:linkedin" width="18" height="18" />
         },
         {
             name: 'GitHub',
             url: 'https://github.com/samuelIdowu',
-            icon: <Icon icon="lucide:github" width="20" height="20" />
+            icon: <Icon icon="lucide:github" width="18" height="18" />
         },
         {
             name: 'WhatsApp',
             url: 'https://wa.me/2348144604146',
-            icon: <Icon icon="ri:whatsapp-line" width="20" height="20" />
+            icon: <Icon icon="ri:whatsapp-line" width="18" height="18" />
         },
         {
             name: 'X',
             url: 'https://x.com/thenasis2',
-            icon: <Icon icon="ri:twitter-x-line" width="20" height="20" />
+            icon: <Icon icon="ri:twitter-x-line" width="18" height="18" />
         }
     ];
 
-    const inputClasses = "w-full px-0 py-3 bg-transparent border-b border-border-color focus:border-text-primary focus:outline-none transition-colors placeholder:text-gray-400";
+    const inputClasses = "w-full px-0 py-3 bg-transparent border-b border-border-color focus:border-accent-color focus:outline-none transition-colors placeholder:text-gray-300 text-text-primary";
 
     return (
         <section id="contact" className="container py-32">
@@ -59,7 +59,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="heading-xl text-5xl mb-16 text-center"
+                className="heading-xl mb-16 text-center"
             >
                 Contact.
             </motion.h2>
@@ -73,17 +73,17 @@ const Contact = () => {
                     transition={{ delay: 0.2 }}
                     className="flex flex-col justify-center"
                 >
-                    <h3 className="text-3xl font-display font-semibold mb-6">Let's work together.</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-text-primary">Let's work together.</h3>
                     <p className="text-text-secondary text-lg mb-8 leading-relaxed">
                         I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
                     </p>
 
                     <div className="flex flex-col gap-6">
                         <div className="flex items-center gap-4">
-                            <span className="p-3 bg-bg-surface rounded-full border border-border-color text-text-primary">
-                                <Icon icon="lucide:mail" width="20" height="20" />
+                            <span className="p-2 bg-gray-50 rounded-full border border-border-color text-text-primary">
+                                <Icon icon="lucide:mail" width="18" height="18" />
                             </span>
-                            <a href="mailto:samuelidowu689@gmail.com" className="text-lg hover:text-text-primary transition-colors text-text-secondary">
+                            <a href="mailto:samuelidowu689@gmail.com" className="text-lg hover:text-accent-color transition-colors text-text-secondary">
                                 samuelidowu689@gmail.com
                             </a>
                         </div>
@@ -95,7 +95,7 @@ const Contact = () => {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-3 bg-bg-surface rounded-full border border-border-color text-text-secondary hover:text-text-primary hover:border-text-primary transition-all duration-300"
+                                    className="p-2 bg-gray-50 rounded-full border border-border-color text-text-secondary hover:text-white hover:bg-accent-color hover:border-accent-color transition-all duration-300"
                                     aria-label={link.name}
                                 >
                                     {link.icon}
@@ -111,7 +111,7 @@ const Contact = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="bg-bg-surface/50 p-8 rounded-3xl border border-border-color/50 backdrop-blur-sm"
+                    className="bg-bg-surface p-8 rounded-[5px] border border-border-color"
                 >
                     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                         <div>
@@ -155,7 +155,7 @@ const Contact = () => {
                         </div>
                         <button
                             type="submit"
-                            className="w-full py-4 bg-text-primary text-white rounded-lg font-medium text-lg hover:bg-black/90 transition-colors shadow-lg shadow-gray-200 mt-4"
+                            className="w-full py-3 bg-accent-color text-white rounded-[5px] font-medium text-sm hover:bg-accent-hover transition-colors mt-4"
                         >
                             Send Message
                         </button>

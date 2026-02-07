@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,12 +11,12 @@
   }
 
   body {
-    @apply font-lexend antialiased min-h-screen relative overflow-x-hidden;
-    background: radial-gradient(circle at 50% 0%, #ffffff 0%, #fafafa 100%);
+    @apply font-sans antialiased min-h-screen relative overflow-x-hidden;
+    background: radial-gradient(circle at 50% 0%, theme('colors.accent-light') 0%, theme('colors.bg-color') 100%);
   }
 
   ::selection {
-    @apply bg-text-primary text-white;
+    @apply bg-accent-color text-white;
   }
 
   h1,
@@ -23,13 +25,13 @@
   h4,
   h5,
   h6 {
-    @apply font-chillax font-semibold;
+    @apply font-sans font-bold tracking-tight text-text-primary;
   }
 }
 
 @layer utilities {
   .heading-xl {
-    @apply text-5xl md:text-7xl font-semibold leading-tight text-transparent bg-clip-text bg-gradient-to-br from-gray-900 to-gray-500;
+    @apply text-5xl md:text-7xl font-bold tracking-tighter leading-tight text-text-primary;
   }
 
   .container {
