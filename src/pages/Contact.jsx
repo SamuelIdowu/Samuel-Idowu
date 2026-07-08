@@ -9,6 +9,8 @@ const Contact = () => {
         message: ''
     });
 
+    const [formStatus, setFormStatus] = useState({ type: null, message: '' });
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -16,11 +18,19 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const text = `Name: ${formData.name}%0AEmail: ${formData.email}%0A%0AMessage:%0A${formData.message}`;
+        try {
+            const text = `Name: ${formData.name}%0AEmail: ${formData.email}%0A%0AMessage:%0A${formData.message}`;
+            window.open(`https://wa.me/2348144604146?text=${text}`, '_blank');
 
-        window.open(`https://wa.me/2348144604146?text=${text}`, '_blank');
-
-        setFormData({ name: '', email: '', message: '' });
+            setFormData({ name: '', email: '', message: '' });
+            setFormStatus({ type: 'success', message: 'Message sent! Check your WhatsApp to continue.' });
+            
+            setTimeout(() => {
+                setFormStatus({ type: null, message: '' });
+            }, 5000);
+        } catch (error) {
+            setFormStatus({ type: 'error', message: 'Failed to open WhatsApp. Please try the social links instead.' });
+        }
     };
 
     const socialLinks = [
@@ -73,9 +83,9 @@ const Contact = () => {
                     transition={{ delay: 0.2 }}
                     className="flex flex-col justify-center"
                 >
-                    <h3 className="text-2xl font-bold mb-6 text-text-primary">Let's work together.</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-text-primary">Let's build something.</h3>
                     <p className="text-text-secondary text-lg mb-8 leading-relaxed">
-                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                        Got a SaaS idea, an automation you need built, or an AI-powered tool that should exist? Let's talk. I'm available for freelance projects, contract work, and full-time opportunities.
                     </p>
 
                     <div className="flex flex-col gap-6">
@@ -153,9 +163,14 @@ const Contact = () => {
                                 placeholder="Tell me about your project..."
                             ></textarea>
                         </div>
+                        {formStatus.message && (
+                            <div className={`p-4 rounded-[5px] text-sm ${formStatus.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+                                {formStatus.message}
+                            </div>
+                        )}
                         <button
                             type="submit"
-                            className="w-full py-3 bg-accent-color text-white rounded-[5px] font-medium text-sm hover:bg-accent-hover transition-colors mt-4"
+                            className="w-full py-3 bg-accent-color text-white rounded-full font-medium text-sm hover:bg-accent-hover transition-colors mt-4 flex justify-center items-center h-12"
                         >
                             Send Message
                         </button>

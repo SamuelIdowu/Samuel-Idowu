@@ -1,54 +1,114 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const ProjectCard = ({ title, description, tags, status, image, link }) => {
+const ProjectCard = ({ title, description, tags, status, image, link, role, metric, featured, index }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <motion.div
+            layout
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-            className="group p-6 rounded-[5px] bg-bg-surface border border-border-color relative overflow-hidden mb-8 transition-all duration-300 hover:border-accent-color hover:shadow-sm"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="border-b border-border-color overflow-hidden"
         >
-            <div className="flex justify-between items-start mb-6">
-                <div>
+            {/* Header / Strip */}
+            <motion.button 
+                layout
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex items-center justify-between py-6 md:py-8 cursor-pointer text-left group transition-colors"
+            >
+                <div className="flex items-center gap-6">
+                    <h3 className="text-3xl md:text-5xl font-bold font-sans text-text-primary group-hover:text-accent-color transition-colors">
+                        {title}
+                    </h3>
                     {status && (
-                        <span className="bg-gray-100 text-text-secondary border border-border-color py-1 px-3 rounded-full text-xs font-medium inline-block mb-3">
+                        <span className="hidden md:inline-block text-xs uppercase tracking-wider font-semibold border border-border-color rounded-full px-3 py-1">
                             {status}
                         </span>
                     )}
-                    <h3 className="font-sans font-bold text-2xl text-text-primary mb-2 group-hover:text-accent-color transition-colors">{title}</h3>
-                    <p className="text-text-secondary max-w-[400px] leading-relaxed text-sm">{description}</p>
                 </div>
+                <motion.div 
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="w-12 h-12 rounded-full border border-border-color flex items-center justify-center text-text-secondary group-hover:border-accent-color group-hover:text-accent-color group-hover:bg-gray-50 transition-colors"
+                >
+                    <Icon icon="lucide:chevron-down" className="w-6 h-6" />
+                </motion.div>
+            </motion.button>
 
-                {link ? (
-                    <a href={link} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-transparent flex items-center justify-center border border-border-color cursor-pointer transition-colors duration-200 hover:bg-accent-color hover:text-white hover:border-accent-color text-text-primary">
-                        <Icon icon="lucide:external-link" width="18" height="18" />
-                    </a>
-                ) : (
-                    <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center border border-border-color opacity-50 text-text-primary">
-                        <Icon icon="lucide:external-link" width="18" height="18" />
-                    </div>
+            {/* Expandable Content */}
+            <AnimatePresence initial={false}>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pb-8 md:pb-12 pt-4 flex flex-col md:flex-row gap-8 md:gap-12">
+                            {/* Left: Info */}
+                            <div className="flex-1 flex flex-col justify-between">
+                                <div>
+                                    <p className="text-text-secondary text-lg leading-relaxed mb-6 max-w-xl">
+                                        {description}
+                                    </p>
+                                    
+                                    <div className="grid grid-cols-2 gap-4 mb-8">
+                                        {role && (
+                                            <div>
+                                                <span className="text-xs text-text-secondary uppercase tracking-widest block mb-1">Role</span>
+                                                <span className="text-text-primary font-medium">{role}</span>
+                                            </div>
+                                        )}
+                                        {metric && (
+                                            <div>
+                                                <span className="text-xs text-text-secondary uppercase tracking-widest block mb-1">Outcome</span>
+                                                <span className="text-text-primary font-medium">{metric}</span>
+                                            </div>
+                                        )}
+                                    </div>
+                                    
+                                    <div className="flex gap-2 flex-wrap mb-8">
+                                        {tags.map((tag, idx) => (
+                                            <span 
+                                                key={idx} 
+                                                className="text-xs font-medium border border-border-color rounded-full px-3 py-1.5 bg-bg-surface text-text-secondary"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                                
+                                {link && (
+                                    <div>
+                                        <a 
+                                            href={link} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="inline-flex text-white items-center gap-2 bg-text-primary text-bg-base px-6 py-3 rounded-full hover:bg-accent-color transition-colors font-medium text-sm group"
+                                        >
+                                            View Live Project
+                                            <Icon icon="lucide:arrow-up-right" className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        </a>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Right: Image */}
+                            {image && (
+                                <div className="w-full md:w-5/12 rounded-[5px] overflow-hidden border border-border-color self-start bg-gray-100">
+                                    <img src={image} alt={title} className="w-full h-auto object-cover" loading="lazy" />
+                                </div>
+                            )}
+                        </div>
+                    </motion.div>
                 )}
-            </div>
-
-            <div className="flex gap-2 mb-6 flex-wrap">
-                {tags.map((tag, index) => (
-                    <span key={index} className="py-1 px-3 rounded-full bg-gray-50 border border-border-color text-xs text-text-secondary font-medium">
-                        {tag}
-                    </span>
-                ))}
-            </div>
-
-            {/* Placeholder for image */}
-            <div className="w-full h-[300px] bg-gray-50 rounded-[3px] flex items-center justify-center overflow-hidden border border-border-color/30">
-                {image ? (
-                    <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                ) : (
-                    <span className="text-gray-300 font-sans text-sm">Project Preview</span>
-                )}
-            </div>
+            </AnimatePresence>
         </motion.div>
     );
 };
