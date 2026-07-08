@@ -7,13 +7,13 @@ const Footer = () => {
         <footer className="mt-32">
             {/* Pre-footer CTA */}
             <div className="container mb-24">
-                <div className="bg-bg-surface border border-border-color rounded-[5px] p-12 md:p-20 text-center flex flex-col items-center justify-center gap-6 relative overflow-hidden">
+                <div className="bg-bg-surface border border-border-color rounded-none p-12 md:p-20 text-center flex flex-col items-center justify-center gap-6 relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-color to-blue-500"></div>
                     <h2 className="heading-xl text-4xl md:text-5xl lg:text-6xl max-w-3xl">Have a product idea? Let's ship it.</h2>
                     <p className="text-text-secondary text-lg md:text-xl max-w-2xl mb-4">
                         SaaS products, automation tools, AI-powered systems — I build fast and ship real software.
                     </p>
-                    <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-accent-color text-white rounded-full font-medium transition-all hover:-translate-y-1 hover:shadow-lg shadow-accent-color/30">
+                    <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-accent-color text-white rounded-none font-medium transition-all hover:-translate-y-1 hover:shadow-lg shadow-accent-color/30">
                         Get in Touch
                         <Icon icon="lucide:arrow-right" className="ml-2" width="20" height="20" />
                     </Link>
@@ -37,10 +37,10 @@ const Footer = () => {
                                 samuelidowu689@gmail.com
                             </a>
                             <div className="flex gap-4">
-                                <a href="https://github.com/samuelIdowu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-bg-surface border border-border-color flex items-center justify-center text-text-secondary hover:text-accent-color hover:border-accent-color transition-all">
+                                <a href="https://github.com/samuelIdowu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-none bg-bg-surface border border-border-color flex items-center justify-center text-text-secondary hover:text-accent-color hover:border-accent-color transition-all">
                                     <Icon icon="lucide:github" width="20" height="20" />
                                 </a>
-                                <a href="https://www.linkedin.com/in/samueltemiloluwaidowu/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-bg-surface border border-border-color flex items-center justify-center text-text-secondary hover:text-accent-color hover:border-accent-color transition-all">
+                                <a href="https://www.linkedin.com/in/samueltemiloluwaidowu/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-none bg-bg-surface border border-border-color flex items-center justify-center text-text-secondary hover:text-accent-color hover:border-accent-color transition-all">
                                     <Icon icon="lucide:linkedin" width="20" height="20" />
                                 </a>
                             </div>

@@ -90,7 +90,7 @@ const Contact = () => {
 
                     <div className="flex flex-col gap-6">
                         <div className="flex items-center gap-4">
-                            <span className="p-2 bg-gray-50 rounded-full border border-border-color text-text-primary">
+                            <span className="p-2 bg-gray-50 rounded-none border border-border-color text-text-primary">
                                 <Icon icon="lucide:mail" width="18" height="18" />
                             </span>
                             <a href="mailto:samuelidowu689@gmail.com" className="text-lg hover:text-accent-color transition-colors text-text-secondary">
@@ -105,7 +105,7 @@ const Contact = () => {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-2 bg-gray-50 rounded-full border border-border-color text-text-secondary hover:text-white hover:bg-accent-color hover:border-accent-color transition-all duration-300"
+                                    className="p-2 bg-gray-50 rounded-none border border-border-color text-text-secondary hover:text-white hover:bg-accent-color hover:border-accent-color transition-all duration-300"
                                     aria-label={link.name}
                                 >
                                     {link.icon}
@@ -121,7 +121,7 @@ const Contact = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="bg-bg-surface p-8 rounded-[5px] border border-border-color"
+                    className="bg-bg-surface p-8 rounded-none border border-border-color"
                 >
                     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                         <div>
@@ -164,13 +164,13 @@ const Contact = () => {
                             ></textarea>
                         </div>
                         {formStatus.message && (
-                            <div className={`p-4 rounded-[5px] text-sm ${formStatus.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+                            <div className={`p-4 rounded-none text-sm ${formStatus.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
                                 {formStatus.message}
                             </div>
                         )}
                         <button
                             type="submit"
-                            className="w-full py-3 bg-accent-color text-white rounded-full font-medium text-sm hover:bg-accent-hover transition-colors mt-4 flex justify-center items-center h-12"
+                            className="w-full py-3 bg-accent-color text-white rounded-none font-medium text-sm hover:bg-accent-hover transition-colors mt-4 flex justify-center items-center h-12"
                         >
                             Send Message
                         </button>

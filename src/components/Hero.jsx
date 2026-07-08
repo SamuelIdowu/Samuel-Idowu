@@ -48,7 +48,7 @@ const Hero = () => {
                         I build production SaaS products, automation bots, and internal tools using AI-assisted development. Mechatronics background. I think in systems, and I ship fast.
                     </p>
                     <div className="flex items-center gap-4">
-                        <a href="#work" className="inline-flex items-center justify-center px-6 py-3 bg-text-primary text-bg-surface font-medium rounded-full hover:bg-accent-color transition-colors duration-300">
+                        <a href="#work" className="inline-flex items-center justify-center px-6 py-3 bg-text-primary text-bg-surface font-medium rounded-none hover:bg-accent-color transition-colors duration-300">
                             View My Work
                             <motion.div
                                 animate={{ y: [0, 4, 0] }}

@@ -47,7 +47,7 @@ const Navbar = () => {
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className={`fixed z-50 transition-all duration-300 flex items-center justify-between px-6 top-0 left-0 w-full py-4 md:left-1/2 md:-translate-x-1/2 md:w-auto md:min-w-[400px] md:rounded-full md:border md:border-border-color/50 md:shadow-lg ${scrolled ? 'bg-bg-surface/80 backdrop-blur-md md:top-4 md:py-3 border-b border-border-color md:border-b-border-color/50' : 'bg-transparent md:top-6 md:py-4 md:bg-bg-surface/40 md:backdrop-blur-sm'}`}
+                className={`fixed z-50 transition-all duration-300 flex items-center justify-between px-6 top-0 left-0 w-full py-4 md:left-1/2 md:-translate-x-1/2 md:w-auto md:min-w-[400px] md:rounded-none md:border md:border-border-color/50 md:shadow-lg ${scrolled ? 'bg-bg-surface/80 backdrop-blur-md md:top-4 md:py-3 border-b border-border-color md:border-b-border-color/50' : 'bg-transparent md:top-6 md:py-4 md:bg-bg-surface/40 md:backdrop-blur-sm'}`}
             >
                 <Link to="/" className="font-sans text-xl font-bold text-text-primary no-underline tracking-tight z-50 relative md:mr-8">
                     Samuel.
@@ -60,14 +60,14 @@ const Navbar = () => {
                         return (
                             <div
                                 key={item.name}
-                                className="relative px-4 py-2 rounded-full cursor-pointer"
+                                className="relative px-4 py-2 rounded-none cursor-pointer"
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
                                 {hoveredIndex === index && (
                                     <motion.span
                                         layoutId="nav-hover"
-                                        className="absolute inset-0 bg-text-primary/5 rounded-full -z-10"
+                                        className="absolute inset-0 bg-text-primary/5 rounded-none -z-10"
                                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                     />
                                 )}

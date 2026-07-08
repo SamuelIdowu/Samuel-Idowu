@@ -25,7 +25,7 @@ const ProjectCard = ({ title, description, tags, status, image, link, role, metr
                         {title}
                     </h3>
                     {status && (
-                        <span className="hidden md:inline-block text-xs uppercase tracking-wider font-semibold border border-border-color rounded-full px-3 py-1">
+                        <span className="hidden md:inline-block text-xs uppercase tracking-wider font-semibold border border-border-color rounded-none px-3 py-1">
                             {status}
                         </span>
                     )}
@@ -33,7 +33,7 @@ const ProjectCard = ({ title, description, tags, status, image, link, role, metr
                 <motion.div 
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="w-12 h-12 rounded-full border border-border-color flex items-center justify-center text-text-secondary group-hover:border-accent-color group-hover:text-accent-color group-hover:bg-gray-50 transition-colors"
+                    className="w-12 h-12 rounded-none border border-border-color flex items-center justify-center text-text-secondary group-hover:border-accent-color group-hover:text-accent-color group-hover:bg-gray-50 transition-colors"
                 >
                     <Icon icon="lucide:chevron-down" className="w-6 h-6" />
                 </motion.div>
@@ -76,7 +76,7 @@ const ProjectCard = ({ title, description, tags, status, image, link, role, metr
                                         {tags.map((tag, idx) => (
                                             <span 
                                                 key={idx} 
-                                                className="text-xs font-medium border border-border-color rounded-full px-3 py-1.5 bg-bg-surface text-text-secondary"
+                                                className="text-xs font-medium border border-border-color rounded-none px-3 py-1.5 bg-bg-surface text-text-secondary"
                                             >
                                                 {tag}
                                             </span>
@@ -90,7 +90,7 @@ const ProjectCard = ({ title, description, tags, status, image, link, role, metr
                                             href={link} 
                                             target="_blank" 
                                             rel="noopener noreferrer"
-                                            className="inline-flex text-white items-center gap-2 bg-text-primary text-bg-base px-6 py-3 rounded-full hover:bg-accent-color transition-colors font-medium text-sm group"
+                                            className="inline-flex text-white items-center gap-2 bg-text-primary text-bg-base px-6 py-3 rounded-none hover:bg-accent-color transition-colors font-medium text-sm group"
                                         >
                                             View Live Project
                                             <Icon icon="lucide:arrow-up-right" className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -101,7 +101,7 @@ const ProjectCard = ({ title, description, tags, status, image, link, role, metr
 
                             {/* Right: Image */}
                             {image && (
-                                <div className="w-full md:w-5/12 rounded-[5px] overflow-hidden border border-border-color self-start bg-gray-100">
+                                <div className="w-full md:w-5/12 rounded-none overflow-hidden border border-border-color self-start bg-gray-100">
                                     <img src={image} alt={title} className="w-full h-auto object-cover" loading="lazy" />
                                 </div>
                             )}

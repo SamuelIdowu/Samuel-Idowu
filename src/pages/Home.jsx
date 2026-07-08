@@ -92,7 +92,7 @@ const Home = () => {
 
             {/* About Preview Section */}
             <section className="container mb-32">
-                <div className="bg-bg-surface border border-border-color rounded-[5px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-12 hover:border-accent-color transition-colors duration-300">
+                <div className="bg-bg-surface border border-border-color rounded-none p-8 md:p-12 flex flex-col md:flex-row items-center gap-12 hover:border-accent-color transition-colors duration-300">
                     <div className="w-48 h-48 rounded-full bg-gray-50 flex-shrink-0 border border-border-color flex items-center justify-center overflow-hidden">
                         <span className="text-text-secondary text-sm">Profile Photo</span>
                     </div>
@@ -117,7 +117,7 @@ const Home = () => {
                     <h3 className="text-xl font-sans font-semibold mb-8 text-center text-text-secondary">Product Development & AI</h3>
                     <div className="flex flex-wrap justify-center gap-4 max-w-[900px] mx-auto">
                         {softwareSkills.map(tech => (
-                            <div key={tech.name} className="px-5 py-3 bg-bg-surface rounded-full flex items-center gap-3 border border-border-color transition-all hover:border-accent-color hover:shadow-sm hover:-translate-y-1">
+                            <div key={tech.name} className="px-5 py-3 bg-bg-surface rounded-none flex items-center gap-3 border border-border-color transition-all hover:border-accent-color hover:shadow-sm hover:-translate-y-1">
                                 <Icon icon={tech.icon} width="20" height="20" className="text-text-primary" />
                                 <span className="font-semibold text-sm">{tech.name}</span>
                             </div>
@@ -129,7 +129,7 @@ const Home = () => {
                     <h3 className="text-xl font-sans font-semibold mb-8 text-center text-text-secondary">Systems & Embedded</h3>
                     <div className="flex flex-wrap justify-center gap-4 max-w-[900px] mx-auto">
                         {engineeringSkills.map(tech => (
-                            <div key={tech.name} className="px-5 py-3 bg-bg-surface rounded-full flex items-center gap-3 border border-border-color transition-all hover:border-accent-color hover:shadow-sm hover:-translate-y-1">
+                            <div key={tech.name} className="px-5 py-3 bg-bg-surface rounded-none flex items-center gap-3 border border-border-color transition-all hover:border-accent-color hover:shadow-sm hover:-translate-y-1">
                                 <Icon icon={tech.icon} width="20" height="20" className="text-text-primary" />
                                 <span className="font-semibold text-sm">{tech.name}</span>
                             </div>
